@@ -18,10 +18,13 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     var pet_info = {name:"Mochi", weight:10, happiness:50};
   
     function clickedTreatButton() {
-      // Increase pet happiness
-      // Increase pet weight
-      pet_info.happiness +=5;
-      pet_info.weight +=5;
+      let treatAmount = 5;
+
+      pet_info.happiness += 5;
+
+      // HW10 - fixed string concatenation bug
+      pet_info.weight += treatAmount; 
+
       checkAndUpdatePetInfoInHtml();
       showPetMessage("Yummy! Mochi loved her treat!");
     }
@@ -99,3 +102,55 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
         }
       }
     }
+
+//HW 10
+
+// 1. Log Info
+console.log("Mochi: Game successfully loaded!");
+console.info("Mochi: Starting weight is 10 pounds.");
+
+// 2. Log Warning
+console.warn("Mochi: Low happiness warning demonstration.");
+
+// 3. Log Error
+console.error("Mochi: Simulated pet action error.");
+
+// 4. Log Table
+console.table([
+    { Action: "Treat", Weight: 5, Happiness: 5 },
+    { Action: "Play", Weight: -2, Happiness: 15 },
+    { Action: "Exercise", Weight: -3, Happiness: -10 },
+    { Action: "Nap", Weight: -1, Happiness: 3 }
+]);
+
+// 5. Log Group
+console.group("Mochi's Pet Information");
+console.log("Name:", pet_info.name);
+console.log("Weight:", pet_info.weight);
+console.log("Happiness:", pet_info.happiness);
+console.groupEnd();
+
+// 6. Log Custom
+console.log(
+    "%cWelcome to Mochi's Giga Pet!",
+    "color: purple; background: pink; font-size: 20px; padding: 5px;"
+);
+
+
+// 1. Trigger a 404 Network Error
+fetch("images/missing-mochi.jpg");
+
+// 2. Trigger a TypeError
+function triggerTypeError() {
+    let missingPet;
+    console.log(missingPet.name);
+}
+
+// 3. Trigger a Performance Violation
+function triggerViolation() {
+    const start = performance.now();
+
+    while (performance.now() - start < 500) {
+        // Intentionally slow operation
+    }
+}
